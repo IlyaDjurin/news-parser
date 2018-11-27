@@ -32,14 +32,17 @@ class NewsGrubber:
 
 
 class Lenta(NewsGrubber):
+
+    def __init__(self):
+        self.lenta_news_list = self.create_news_list('https://lenta.ru/rss')
+
     def news(self, limit=None):
-        lenta_news_list = self.create_news_list('https://lenta.ru/rss')
         if limit and limit <= 199:
-            return pprint(lenta_news_list[0:limit])
-        return pprint(lenta_news_list)
+            return pprint(self.lenta_news_list[0:limit])
+        return pprint(self.lenta_news_list)
 
     def grub(self, url=None):
-        for object in self.create_news_list('https://lenta.ru/rss'):
+        for object in self.lenta_news_list:
             if object['link'] == url:
                 object.pop('link')
                 return pprint(object)
@@ -48,14 +51,17 @@ class Lenta(NewsGrubber):
 
 
 class M24News(NewsGrubber):
+
+    def __init__(self):
+        self.news_list = self.create_news_list('https://www.m24.ru/rss.xml')
+
     def news(self, limit=None):
-        news_list = self.create_news_list('https://www.m24.ru/rss.xml')
         if limit and limit <= 29:
-            return pprint(news_list[0:limit])
-        return pprint(news_list)
+            return pprint(self.news_list[0:limit])
+        return pprint(self.news_list)
 
     def grub(self, url=None):
-        for object in self.create_news_list('https://www.m24.ru/rss.xml'):
+        for object in self.news_list:
             if object['link'] == url:
                 object.pop('link')
                 return pprint(object)
@@ -64,14 +70,17 @@ class M24News(NewsGrubber):
 
 
 class Kommersant(NewsGrubber):
+
+    def __init__(self):
+        self.news_list = self.create_news_list('http://www.kommersant.ru/RSS/news.xml')
+
     def news(self, limit=None):
-        news_list = self.create_news_list('http://www.kommersant.ru/RSS/news.xml')
         if limit and limit <= 270:
-            return pprint(news_list[0:limit])
-        return pprint(news_list)
+            return pprint(self.news_list[0:limit])
+        return pprint(self.news_list)
 
     def grub(self, url=None):
-        for object in self.create_news_list('http://www.kommersant.ru/RSS/news.xml'):
+        for object in self.news_list:
             if object['link'] == url:
                 object.pop('link')
                 return pprint(object)
@@ -80,14 +89,17 @@ class Kommersant(NewsGrubber):
 
 
 class Interfax(NewsGrubber):
+
+    def __init__(self):
+        self.news_list = self.create_news_list('https://www.interfax.ru/rss.asp')
+
     def news(self, limit=None):
-        news_list = self.create_news_list('https://www.interfax.ru/rss.asp')
         if limit and limit <= 24:
-            return pprint(news_list[0:limit])
-        return pprint(news_list)
+            return pprint(self.news_list[0:limit])
+        return pprint(self.news_list)
 
     def grub(self, url=None):
-        for object in self.create_news_list('https://www.interfax.ru/rss.asp'):
+        for object in self.news_list:
             if object['link'] == url:
                 object.pop('link')
                 return pprint(object)
