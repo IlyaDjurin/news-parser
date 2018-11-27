@@ -1,0 +1,3 @@
+lxml==4.2.5
+requests-xml==0.2.3
+beautifulsoup4==4.6.3
